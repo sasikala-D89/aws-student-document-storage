@@ -1,0 +1,18 @@
+[Unit]
+Description=Student Documents web app (Java/Spring Boot)
+After=network.target
+
+[Service]
+Type=simple
+User=studentdocs
+Group=studentdocs
+WorkingDirectory=/opt/studentdocs
+Environment="STUDENTDOCS_BUCKET=REPLACE_WITH_BUCKET_NAME"
+Environment="AWS_REGION=us-east-1"
+Environment="STUDENTDOCS_LOG_FILE=/var/log/studentdocs/app.log"
+ExecStart=/usr/bin/java -jar /opt/studentdocs/studentdocs.jar
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create account — Student Documents</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="wordmark" th:href="@{/login}">Student Documents</a>
+  </header>
+
+  <main class="wrap">
+    <div class="flash-stack" th:if="${error}">
+      <div class="flash flash-error" th:text="${error}"></div>
+    </div>
+
+    <div class="auth-panel">
+      <h1>Create your account</h1>
+      <p class="lede">Pick a username and password. No email required for this class deployment.</p>
+
+      <form th:action="@{/register}" method="post" class="stack-form">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username" required autofocus>
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="new-password" required>
+
+        <button type="submit">Create account</button>
+      </form>
+
+      <p class="switch-line">Already registered? <a th:href="@{/login}">Log in</a></p>
+    </div>
+  </main>
+
+  <footer class="footer">Files are stored in Amazon S3, under your own account only.</footer>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your documents — Student Documents</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="wordmark" th:href="@{/dashboard}">Student Documents</a>
+    <nav class="topnav">
+      <span class="who" th:text="${username}"></span>
+      <a th:href="@{/logout}">Log out</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <div class="flash-stack">
+      <div class="flash flash-success" th:if="${success}" th:text="${success}"></div>
+      <div class="flash flash-error" th:if="${error}" th:text="${error}"></div>
+    </div>
+
+    <section class="upload-panel">
+      <h1>Your documents</h1>
+      <p class="lede">Upload coursework, notes, or assignments. Only you can see or download these files.</p>
+
+      <form th:action="@{/upload}" method="post" enctype="multipart/form-data" class="upload-form">
+        <input type="file" name="document" required>
+        <button type="submit">Upload</button>
+      </form>
+    </section>
+
+    <section class="doc-register">
+      <table class="doc-table" th:if="${not #lists.isEmpty(documents)}">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Uploaded</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="doc : ${documents}">
+            <td class="doc-name" th:text="${doc.displayName()}"></td>
+            <td th:text="${doc.sizeKb()} + ' KB'"></td>
+            <td th:text="${doc.modified()}"></td>
+            <td class="doc-actions">
+              <a th:href="@{/download(key=${doc.key()})}">Download</a>
+              <form th:action="@{/delete}" method="post" onsubmit="return confirm('Delete this file?');">
+                <input type="hidden" name="key" th:value="${doc.key()}">
+                <button type="submit" class="link-button">Delete</button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="empty-state" th:if="${#lists.isEmpty(documents)}">Nothing uploaded yet. Add your first document above.</p>
+    </section>
+  </main>
+
+  <footer class="footer">Files are stored in Amazon S3, under your own account only.</footer>
+</body>
+</html>

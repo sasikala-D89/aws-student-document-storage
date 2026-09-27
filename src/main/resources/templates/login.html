@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in — Student Documents</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="wordmark" th:href="@{/login}">Student Documents</a>
+  </header>
+
+  <main class="wrap">
+    <div class="flash-stack">
+      <div class="flash flash-success" th:if="${param.registered != null}">Account created. You can log in now.</div>
+      <div class="flash flash-error" th:if="${param.error != null}">Incorrect username or password.</div>
+    </div>
+
+    <div class="auth-panel">
+      <h1>Log in</h1>
+      <p class="lede">Access the documents you've uploaded, from anywhere.</p>
+
+      <form th:action="@{/login}" method="post" class="stack-form">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username" required autofocus>
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+
+        <button type="submit">Log in</button>
+      </form>
+
+      <p class="switch-line">New here? <a th:href="@{/register}">Create an account</a></p>
+    </div>
+  </main>
+
+  <footer class="footer">Files are stored in Amazon S3, under your own account only.</footer>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "metrics": {
+    "namespace": "StudentDocs/EC2",
+    "metrics_collected": {
+      "mem": { "measurement": ["mem_used_percent"] },
+      "disk": {
+        "measurement": ["used_percent"],
+        "resources": ["/"]
+      },
+      "cpu": {
+        "measurement": ["cpu_usage_active"],
+        "totalcpu": true
+      }
+    }
+  },
+  "logs": {
+    "logs_collected": {
+      "files": {
+        "collect_list": [
+          {
+            "file_path": "/var/log/studentdocs/app.log",
+            "log_group_name": "/studentdocs/app",
+            "log_stream_name": "{instance_id}"
+          },
+          {
+            "file_path": "/var/log/syslog",
+            "log_group_name": "/studentdocs/syslog",
+            "log_stream_name": "{instance_id}"
+          }
+        ]
+      }
+    }
+  }
+}

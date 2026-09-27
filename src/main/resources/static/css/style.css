@@ -1,0 +1,219 @@
+:root {
+  --paper: #F6F1E7;
+  --ink: #1B2A41;
+  --ink-soft: #4A5A70;
+  --line: #D9D2C0;
+  --accent: #B4802E;
+  --accent-ink: #6E4E1B;
+  --success: #3F6B4C;
+  --error: #A6432F;
+  --radius: 3px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+h1, h2 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.3em 0;
+}
+
+h1 { font-size: 1.7rem; }
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 1.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.wordmark {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.topnav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.topnav .who {
+  color: var(--ink-soft);
+}
+
+.topnav a {
+  color: var(--accent-ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.topnav a:hover { border-bottom-color: var(--accent-ink); }
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.5rem 1.75rem 4rem;
+}
+
+.lede {
+  color: var(--ink-soft);
+  max-width: 46ch;
+}
+
+/* Flash messages */
+.flash-stack { margin-bottom: 1.5rem; }
+.flash {
+  padding: 0.6rem 0.9rem;
+  border-left: 3px solid var(--ink-soft);
+  background: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 0.92rem;
+}
+.flash-success { border-left-color: var(--success); color: var(--success); }
+.flash-error { border-left-color: var(--error); color: var(--error); }
+
+/* Auth forms */
+.auth-panel {
+  max-width: 380px;
+  margin: 2rem auto 0;
+}
+
+.stack-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 1.5rem;
+}
+
+.stack-form label {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-top: 0.6rem;
+}
+
+.stack-form input {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  font-size: 1rem;
+  font-family: inherit;
+}
+.stack-form input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.stack-form button,
+.upload-form button {
+  margin-top: 1.1rem;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.stack-form button:hover,
+.upload-form button:hover { background: var(--accent-ink); }
+
+.switch-line {
+  margin-top: 1.2rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.switch-line a { color: var(--accent-ink); }
+
+/* Dashboard */
+.upload-panel {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.upload-form {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.upload-form input[type="file"] {
+  font-size: 0.9rem;
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.doc-table th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ink);
+}
+
+.doc-table td {
+  padding: 0.65rem 0.4rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+.doc-name { font-weight: 500; }
+
+.doc-actions {
+  display: flex;
+  gap: 0.9rem;
+  justify-content: flex-end;
+  white-space: nowrap;
+}
+
+.doc-actions a,
+.link-button {
+  color: var(--accent-ink);
+  text-decoration: none;
+  font-size: 0.88rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+.doc-actions a:hover,
+.link-button:hover { text-decoration: underline; }
+
+.doc-actions form { margin: 0; }
+
+.empty-state {
+  color: var(--ink-soft);
+  padding: 1.5rem 0;
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  padding: 1.5rem;
+}
